@@ -1,19 +1,9 @@
-<!-- Chosen Palette: Vibrant Impact (Based on "Energetic & Playful" from inspiration) -->
-<!-- Application Structure Plan: The SPA is designed as a narrative journey in four acts, telling the story of a social entrepreneur using Bumpicare as the central case study. 1. The Starting Point: Establishes context with initial diagnostic data. 2. The Key Challenges: Builds empathy by detailing the entrepreneur's real-world problems. 3. The Solution Path: Presents CareHub Advisory's 3-step process as the clear, logical solution. 4. The Destination: Showcases the positive outcomes. This narrative structure was chosen over a dashboard because it's more engaging for the target audience (potential clients, partners) and better communicates the value proposition of strategic guidance, not just data presentation. -->
-<!-- Visualization & Content Choices: 
-- Madurez Digital: Goal: Inform -> Viz: Donut Chart (Chart.js) -> Justification: Excellent for showing a simple part-to-whole score (44/100) in a visually appealing way.
-- Equipo & Beneficiarios: Goal: Inform -> Viz: Big Number Stat + Unicode Icon -> Justification: High-impact, immediate communication of key metrics without chart clutter.
-- Marketing Impact: Goal: Change -> Viz: Line Chart (Chart.js) -> Justification: Visually demonstrates the qualitative report point of "losing impact over time" with a clear downward trend.
-- CareHub Process: Goal: Organize -> Viz: HTML/CSS Flow Diagram -> Justification: A simple, clean 3-step visual flow built with Flexbox is clearer and more direct for a process than a complex chart, adhering to the NO SVG/Mermaid rule.
-- All other qualitative points (Challenges, Outcomes): Goal: Inform -> Viz: Styled HTML Cards + Unicode Icons -> Justification: Text is the best medium for these insights; cards and icons make the information scannable and visually organized.
--->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Viaje del Emprendedor Social: Caso Bumpicare</title>
+    <title>El Viaje del Emprendedor Social - CareHub Impact</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,20 +12,19 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F8F9FA;
         }
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 400px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            height: 250px;
-            max-height: 300px;
+            height: 320px;
+            max-height: 400px;
         }
         @media (min-width: 768px) {
             .chart-container {
-                height: 280px;
+                height: 384px;
             }
         }
         .gradient-text {
@@ -45,250 +34,224 @@
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-50 text-gray-800">
 
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white shadow-md sticky top-0 z-10">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-             <img src="https://stackblitz.com/storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCSStIZEFFPSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2cae8b26c02af0e43a82bf0c9bf4d6a554c7f21c/-CareHub-logo.png" alt="CareHub Impact Logo" class="h-10">
-            <nav class="hidden md:flex space-x-8">
-                <a href="#punto-de-partida" class="text-gray-600 hover:text-[#FF6361] transition-colors">Diagnóstico</a>
-                <a href="#desafios" class="text-gray-600 hover:text-[#FF6361] transition-colors">Desafíos</a>
-                <a href="#solucion" class="text-gray-600 hover:text-[#FF6361] transition-colors">Solución</a>
-                <a href="#resultados" class="text-gray-600 hover:text-[#FF6361] transition-colors">Resultados</a>
-            </nav>
+            <img src="https://stackblitz.com/storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCSStIZEFFPSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2cae8b26c02af0e43a82bf0c9bf4d6a554c7f21c/-CareHub-logo.png" alt="CareHub Impact Logo" class="h-10">
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-12">
 
-        <section id="intro" class="text-center my-16">
-            <h1 class="text-5xl md:text-6xl font-black mb-4 gradient-text">El Viaje del Emprendedor Social</h1>
-            <p class="text-xl text-[#58508D] max-w-3xl mx-auto">De la incertidumbre a la decisión informada. Analizamos el caso de <span class="font-bold text-[#003F5C]">Bumpicare</span>, un reflejo de los desafíos y oportunidades en el sector social que necesitan un socio estratégico, no solo una herramienta.</p>
+        <section id="intro" class="text-center mb-20">
+            <h2 class="text-5xl md:text-6xl font-black mb-4 gradient-text">El Viaje del Emprendedor Social</h2>
+            <p class="text-xl text-[#58508D] max-w-3xl mx-auto">De la incertidumbre a la decisión informada. Analizamos el caso de <span class="font-bold">Bumpicare</span>, un reflejo de los desafíos y oportunidades en el sector social.</p>
         </section>
 
-        <section id="punto-de-partida" class="mb-24 pt-16">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-[#003F5C]">1. El Punto de Partida: Un Diagnóstico Honesto</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-                    Todo proyecto con impacto comienza con una visión clara y recursos limitados. El diagnóstico inicial de Bumpicare revela una entidad apasionada con una base sólida, pero con un importante camino digital por recorrer para escalar su impacto.
-                </p>
-            </div>
+        <section id="punto-de-partida" class="mb-20">
+            <h3 class="text-4xl font-bold text-center mb-12 text-[#003F5C]">1. El Punto de Partida: Una Foto Inicial</h3>
+            <p class="text-center max-w-2xl mx-auto mb-12 text-gray-600">
+                Todo proyecto con impacto comienza con una visión y un equipo pequeño. El diagnóstico inicial de Bumpicare nos muestra una entidad apasionada pero con un camino digital por recorrer.
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-                    <h3 class="text-xl font-bold text-[#BC5090] mb-4">Puntuación de Madurez Digital</h3>
-                    <div class="chart-container">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h4 class="text-2xl font-bold text-[#BC5090] mb-4">Madurez Digital</h4>
+                    <div class="chart-container" style="height:200px; max-height:200px;">
                         <canvas id="maturityChart"></canvas>
                     </div>
                      <p class="text-lg font-semibold text-[#58508D] mt-4">Nivel: En Desarrollo</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col justify-center items-center">
-                    <h3 class="text-xl font-bold text-[#BC5090] mb-4">Tamaño del Equipo</h3>
-                    <p class="text-8xl font-black text-[#58508D]">1-10</p>
-                    <p class="text-3xl mt-2">👥</p>
-                    <p class="text-gray-500 mt-4">Un equipo pequeño pero ágil y comprometido.</p>
+                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col justify-center items-center">
+                    <h4 class="text-2xl font-bold text-[#BC5090] mb-4">Tamaño del Equipo</h4>
+                    <p class="text-7xl font-black text-[#58508D]">1-10</p>
+                    <p class="text-2xl mt-2">👥</p>
+                    <p class="text-gray-500 mt-2">Pequeño pero ágil.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col justify-center items-center">
-                    <h3 class="text-xl font-bold text-[#BC5090] mb-4">Beneficiarios Atendidos</h3>
-                    <p class="text-8xl font-black text-[#58508D]">101-500</p>
-                    <p class="text-3xl mt-2">❤️</p>
-                    <p class="text-gray-500 mt-4">Impacto real y medible en la comunidad.</p>
+                 <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col justify-center items-center">
+                    <h4 class="text-2xl font-bold text-[#BC5090] mb-4">Beneficiarios Alcanzados</h4>
+                    <p class="text-7xl font-black text-[#58508D]">101-500</p>
+                    <p class="text-2xl mt-2">❤️</p>
+                    <p class="text-gray-500 mt-2">Impacto real en la comunidad.</p>
                 </div>
             </div>
         </section>
 
-        <section id="desafios" class="mb-24 pt-16">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-[#003F5C]">2. Los Desafíos Clave del Crecimiento</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-                    Crecer significa enfrentarse a retos más complejos. Identificamos tres barreras fundamentales que frenan el potencial de Bumpicare, muy comunes en emprendimientos sociales que buscan escalar.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-                    <h3 class="text-2xl font-bold text-[#FF6361] mb-2">Gestión de Datos Fragmentada</h3>
-                    <p class="text-6xl mb-4">📄</p>
-                    <p class="text-gray-700">La información crítica de ventas e inventario reside en papel. Esto genera "vacíos" y "desfases", impidiendo una visión clara del negocio. La fundadora se siente <span class="font-semibold">"peleada con la tecnología"</span>.</p>
+        <section id="desafios" class="mb-20">
+            <h3 class="text-4xl font-bold text-center mb-12 text-[#003F5C]">2. Los Desafíos Clave</h3>
+             <p class="text-center max-w-2xl mx-auto mb-12 text-gray-600">
+                El crecimiento trae consigo retos complejos. Identificamos tres barreras principales que frenan el potencial de Bumpicare, comunes a muchos emprendimientos sociales.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h4 class="text-2xl font-bold text-[#FF6361] mb-2">Gestión de Datos</h4>
+                    <p class="text-5xl mb-4">📄</p>
+                    <p class="text-gray-600">La información crítica de ventas e inventario reside en papel, generando "vacíos" e impidiendo una visión clara del negocio. La fundadora se siente "peleada con la tecnología".</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-                    <h3 class="text-2xl font-bold text-[#FF6361] mb-2">Decisiones basadas en Incertidumbre</h3>
-                     <p class="text-6xl mb-4">🤔</p>
-                    <p class="text-gray-700">Decisiones estratégicas como una nueva importación generan una enorme ansiedad. La fundadora expresa sentir <span class="font-semibold">"miedo a la hora de invertir"</span> por la falta de datos que respalden el riesgo.</p>
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h4 class="text-2xl font-bold text-[#FF6361] mb-2">Toma de Decisiones</h4>
+                     <p class="text-5xl mb-4">🤔</p>
+                    <p class="text-gray-600">Decisiones cruciales como realizar una nueva importación generan una gran incertidumbre. La fundadora expresa sentir <span class="font-semibold">"miedo a la hora de invertir"</span> por la falta de datos fiables.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-                     <h3 class="text-2xl font-bold text-[#FF6361] mb-4">Marketing con Impacto Decreciente</h3>
-                    <div class="chart-container">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                     <h4 class="text-2xl font-bold text-[#FF6361] mb-4">Marketing y Ventas</h4>
+                    <div class="chart-container" style="height:200px; max-height:200px;">
                         <canvas id="marketingImpactChart"></canvas>
                     </div>
-                    <p class="text-gray-700 mt-4">El contenido en Instagram, su canal clave, pierde efectividad con el tiempo. No se logra monetizar la presencia en otras plataformas, diluyendo el esfuerzo.</p>
+                    <p class="text-gray-600 mt-4">El contenido en redes sociales, clave para la venta, pierde efectividad con el tiempo, y no se logra monetizar la presencia en todas las plataformas.</p>
                 </div>
             </div>
         </section>
 
-        <section id="solucion" class="mb-24 pt-16">
-            <div class="text-center mb-16">
-                 <h2 class="text-4xl font-bold text-[#003F5C]">3. El Puente hacia la Claridad: CareHub Advisory</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-                    Nuestra respuesta no es un software, es un acompañamiento estratégico. Actuamos como un socio para convertir datos en confianza y dudas en decisiones con un proceso claro y humano.
-                </p>
-            </div>
-            <div class="bg-white p-10 rounded-2xl shadow-xl border border-gray-100">
-                <div class="flex flex-col md:flex-row justify-around items-center text-center space-y-8 md:space-y-0">
+        <section id="solucion" class="mb-20">
+            <h3 class="text-4xl font-bold text-center mb-12 text-[#003F5C]">3. El Puente Hacia el Crecimiento: CareHub Advisory</h3>
+            <p class="text-center max-w-2xl mx-auto mb-12 text-gray-600">
+                Nuestra respuesta no es una herramienta, es un acompañamiento. Actuamos como un socio estratégico para convertir los datos en confianza y las dudas en decisiones.
+            </p>
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <div class="flex flex-col md:flex-row justify-around items-center text-center">
                     <div class="flex flex-col items-center p-4">
-                        <div class="bg-[#FFA600] text-white rounded-full w-24 h-24 flex items-center justify-center text-4xl font-bold mb-4 ring-8 ring-yellow-100">1</div>
-                        <h3 class="text-xl font-bold text-[#003F5C]">Escuchar y Entender</h3>
-                        <p class="text-gray-600 mt-2 max-w-xs">Nos sumergimos en los problemas y miedos reales para entender el contexto humano detrás de los datos.</p>
+                        <div class="bg-[#FFA600] text-white rounded-full w-20 h-20 flex items-center justify-center text-3xl font-bold mb-4">1</div>
+                        <h4 class="text-xl font-bold text-[#003F5C]">Escuchar y Entender</h4>
+                        <p class="text-gray-600 mt-2 max-w-xs">Nos sumergimos en sus problemas y miedos reales.</p>
                     </div>
-                    <div class="text-5xl text-gray-300 my-4 md:my-0 font-light transform md:rotate-0 rotate-90">&rarr;</div>
+                    <div class="text-4xl text-[#FFA600] my-4 md:my-0 font-light transform md:rotate-0 rotate-90">&rarr;</div>
                     <div class="flex flex-col items-center p-4">
-                         <div class="bg-[#FF6361] text-white rounded-full w-24 h-24 flex items-center justify-center text-4xl font-bold mb-4 ring-8 ring-red-100">2</div>
-                        <h3 class="text-xl font-bold text-[#003F5C]">Digitalizar y Analizar</h3>
-                        <p class="text-gray-600 mt-2 max-w-xs">"Pasamos a limpio" los datos en papel para revelar la verdad objetiva del negocio y encontrar patrones ocultos.</p>
+                         <div class="bg-[#FF6361] text-white rounded-full w-20 h-20 flex items-center justify-center text-3xl font-bold mb-4">2</div>
+                        <h4 class="text-xl font-bold text-[#003F5C]">Digitalizar y Analizar</h4>
+                        <p class="text-gray-600 mt-2 max-w-xs">"Pasamos a limpio" los datos en papel para revelar la verdad del negocio.</p>
                     </div>
-                    <div class="text-5xl text-gray-300 my-4 md:my-0 font-light transform md:rotate-0 rotate-90">&rarr;</div>
+                    <div class="text-4xl text-[#FF6361] my-4 md:my-0 font-light transform md:rotate-0 rotate-90">&rarr;</div>
                      <div class="flex flex-col items-center p-4">
-                         <div class="bg-[#BC5090] text-white rounded-full w-24 h-24 flex items-center justify-center text-4xl font-bold mb-4 ring-8 ring-purple-100">3</div>
-                        <h3 class="text-xl font-bold text-[#003F5C]">Asesorar y Empoderar</h3>
-                        <p class="text-gray-600 mt-2 max-w-xs">Ofrecemos recomendaciones claras y el acompañamiento necesario para tomar decisiones con seguridad y confianza.</p>
+                         <div class="bg-[#BC5090] text-white rounded-full w-20 h-20 flex items-center justify-center text-3xl font-bold mb-4">3</div>
+                        <h4 class="text-xl font-bold text-[#003F5C]">Asesorar y Acompañar</h4>
+                        <p class="text-gray-600 mt-2 max-w-xs">Ofrecemos recomendaciones claras y el apoyo para tomar decisiones.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="resultados" class="text-center pt-16">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-[#003F5C]">4. El Destino: Un Futuro Basado en Datos y Confianza</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-                    Al transformar datos en conocimiento, empoderamos a los emprendedores sociales para que lideren con seguridad, optimicen sus recursos y maximicen su impacto real en la sociedad.
-                </p>
-            </div>
+        <section id="resultados" class="text-center">
+            <h3 class="text-4xl font-bold mb-12 text-[#003F5C]">4. El Destino: Un Futuro Basado en Datos y Confianza</h3>
+            <p class="text-center max-w-2xl mx-auto mb-12 text-gray-600">
+                Al transformar datos en conocimiento, empoderamos a los emprendedores sociales para que lideren con seguridad y maximicen su impacto.
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 transform hover:scale-105 transition-transform">
-                    <p class="text-7xl mb-4">🎯</p>
-                    <h3 class="text-2xl font-black text-[#58508D]">Decisiones Informadas</h3>
-                    <p class="text-gray-600 mt-2">Reemplazar el miedo y la intuición con estrategias basadas en evidencia clara y objetiva.</p>
+                <div class="bg-white p-10 rounded-2xl shadow-lg">
+                    <p class="text-6xl mb-4">🎯</p>
+                    <h4 class="text-3xl font-black text-[#58508D]">Decisiones Informadas</h4>
+                    <p class="text-gray-600 mt-2">Reemplazar el miedo con estrategias basadas en evidencia.</p>
                 </div>
-                <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 transform hover:scale-105 transition-transform">
-                    <p class="text-7xl mb-4">📈</p>
-                    <h3 class="text-2xl font-black text-[#58508D]">Crecimiento Sostenible</h3>
-                    <p class="text-gray-600 mt-2">Optimizar la inversión, los recursos y el esfuerzo de marketing donde realmente generan retorno.</p>
+                <div class="bg-white p-10 rounded-2xl shadow-lg">
+                    <p class="text-6xl mb-4">📈</p>
+                    <h4 class="text-3xl font-black text-[#58508D]">Crecimiento Sostenible</h4>
+                    <p class="text-gray-600 mt-2">Optimizar recursos y enfocar el esfuerzo donde realmente importa.</p>
                 </div>
-                <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 transform hover:scale-105 transition-transform">
-                    <p class="text-7xl mb-4">🤝</p>
-                    <h3 class="text-2xl font-black text-[#58508D]">Confianza Renovada</h3>
-                    <p class="text-gray-600 mt-2">Dar a los fundadores la seguridad y claridad mental para liderar sus proyectos hacia el éxito.</p>
+                <div class="bg-white p-10 rounded-2xl shadow-lg">
+                    <p class="text-6xl mb-4">🤝</p>
+                    <h4 class="text-3xl font-black text-[#58508D]">Confianza Renovada</h4>
+                    <p class="text-gray-600 mt-2">Dar a los fundadores la seguridad para liderar sus proyectos hacia el éxito.</p>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tooltipTitleCallback = {
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                const item = tooltipItems[0];
-                                if (!item) return '';
-                                let label = item.chart.data.labels[item.dataIndex];
-                                if (Array.isArray(label)) {
-                                  return label.join(' ');
-                                } else {
-                                  return label;
-                                }
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
                             }
                         }
                     }
                 }
-            };
+            }
+        };
 
-            const maturityScore = 44;
-            const maturityCtx = document.getElementById('maturityChart').getContext('2d');
-            new Chart(maturityCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Puntuación de Madurez', 'Restante para la excelencia'],
-                    datasets: [{
-                        data: [maturityScore, 100 - maturityScore],
-                        backgroundColor: ['#BC5090', '#F0F0F0'],
-                        borderColor: ['#FFFFFF'],
-                        borderWidth: 4,
-                        cutout: '75%'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        ...tooltipTitleCallback.plugins,
-                        legend: { display: false },
-                        title: {
-                            display: true,
-                            text: `${maturityScore}`,
-                            position: 'top',
-                            align: 'center',
-                            font: { size: 48, weight: 'bold', family: 'Inter' },
-                            color: '#003F5C',
-                            padding: { top: 85 }
-                        },
-                        subtitle: {
-                            display: true,
-                            text: '/100',
-                            position: 'top',
-                            align: 'center',
-                            font: { size: 16, weight: 'normal', family: 'Inter' },
-                            color: '#58508D',
-                             padding: { top: 130 }
-                        }
-                    }
-                }
-            });
-            
-            const marketingCtx = document.getElementById('marketingImpactChart').getContext('2d');
-            new Chart(marketingCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5'],
-                    datasets: [{
-                        label: 'Impacto de Contenido',
-                        data: [100, 85, 60, 45, 30],
-                        backgroundColor: 'rgba(255, 99, 97, 0.1)',
-                        borderColor: '#FF6361',
-                        pointBackgroundColor: '#FF6361',
-                        pointBorderColor: '#FFFFFF',
-                        pointHoverBackgroundColor: '#FFFFFF',
-                        pointHoverBorderColor: '#FF6361',
-                        pointRadius: 4,
-                        pointBorderWidth: 2,
-                        tension: 0.4,
-                        fill: true,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                             display: false
-                        },
-                        x: {
-                            display: false
-                        }
+        const maturityScore = 44;
+        const maturityCtx = document.getElementById('maturityChart').getContext('2d');
+        new Chart(maturityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Puntuación de Madurez', 'Restante'],
+                datasets: [{
+                    label: 'Puntuación',
+                    data: [maturityScore, 100 - maturityScore],
+                    backgroundColor: ['#BC5090', '#EAEAEA'],
+                    borderColor: ['#BC5090', '#EAEAEA'],
+                    borderWidth: 1,
+                    cutout: '70%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipTitleCallback.plugins,
+                    legend: {
+                        display: false
                     },
-                    plugins: {
-                         ...tooltipTitleCallback.plugins,
-                        legend: { display: false },
-                        title: {
-                            display: true,
-                            text: 'Efectividad decreciente del contenido',
-                            position: 'top',
-                            color: '#58508D',
-                            font: { size: 14 }
+                    title: {
+                        display: true,
+                        text: `${maturityScore}/100`,
+                        position: 'bottom',
+                        font: { size: 24, weight: 'bold' },
+                        color: '#003F5C',
+                        padding: { top: -60 }
+                    }
+                }
+            }
+        });
+        
+        const marketingCtx = document.getElementById('marketingImpactChart').getContext('2d');
+        new Chart(marketingCtx, {
+            type: 'line',
+            data: {
+                labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5'],
+                datasets: [{
+                    label: 'Impacto de Contenido',
+                    data: [100, 85, 60, 45, 30],
+                    backgroundColor: 'rgba(255, 99, 97, 0.2)',
+                    borderColor: '#FF6361',
+                    tension: 0.4,
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                         display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                     ...tooltipTitleCallback.plugins,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Efectividad decreciente',
+                        position: 'top',
+                        color: '#58508D',
+                        font: {
+                            size: 14
                         }
                     }
                 }
-            });
+            }
         });
     </script>
 </body>
